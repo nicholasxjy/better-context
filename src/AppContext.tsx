@@ -1,4 +1,5 @@
-import { createStoreContext } from "./contexts/StoreContext";
+import { createContext } from "react";
+import { Store } from "./contexts/createStore";
 
 export type QueryState = {
   name?: string;
@@ -14,7 +15,4 @@ const initState: QueryState = {
   score: undefined,
 };
 
-const { StoreContextProvider: AppContextProvider, useStore: useAppContext } =
-  createStoreContext<QueryState>(initState);
-
-export { AppContextProvider, useAppContext };
+export const AppContext = createContext<Store<QueryState> | null>(null);

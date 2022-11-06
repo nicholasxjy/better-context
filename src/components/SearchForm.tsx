@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Row, Col, Input, Select } from "antd";
-import { useAppContext } from "../AppContext";
+import useAppStore from "../hooks/useAppStore";
 
 export type SearchFieldProps = {
   label: string;
@@ -17,7 +17,7 @@ const SearchField = ({ label, control }: SearchFieldProps) => {
 };
 
 const AgeSelect = () => {
-  const [query, setQuery] = useAppContext()!;
+  const [query, setQuery] = useAppStore()!;
   return (
     <Select
       placeholder="select"
@@ -38,7 +38,7 @@ const AgeSelect = () => {
 };
 
 const ScoreSelect = () => {
-  const [query, setQuery] = useAppContext()!;
+  const [query, setQuery] = useAppStore()!;
   return (
     <Select
       placeholder="select"
@@ -62,7 +62,7 @@ const ScoreSelect = () => {
 };
 
 function SearchForm() {
-  const [query, setQuery] = useAppContext()!;
+  const [query, setQuery] = useAppStore()!;
 
   return (
     <Row gutter={[16, 16]}>

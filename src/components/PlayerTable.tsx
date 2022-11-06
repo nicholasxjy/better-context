@@ -2,8 +2,8 @@ import { Table } from "antd";
 import { usePagination, useMount } from "ahooks";
 import { ColumnType } from "antd/es/table";
 import { Player } from "../apis/data";
-import { useAppContext } from "../AppContext";
 import { fetchPlayers } from "../apis/api";
+import useAppStore from "../hooks/useAppStore";
 
 function PlayerTable() {
   const columns: ColumnType<Player>[] = [
@@ -13,7 +13,7 @@ function PlayerTable() {
     { title: "Score", key: "score", dataIndex: "score" },
   ];
 
-  const [query] = useAppContext();
+  const [query] = useAppStore();
 
   const { run, data, loading, pagination } = usePagination(
     ({ current, pageSize }) => {

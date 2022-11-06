@@ -3,8 +3,9 @@ import "antd/dist/antd.css";
 import { Space, Button } from "antd";
 import SearchForm from "./components/SearchForm";
 import PlayerTable from "./components/PlayerTable";
-import { AppContextProvider } from "./AppContext";
+import { AppContext, QueryState } from "./AppContext";
 import DownloadButton from "./components/DownloadButton";
+import { createStore } from "./contexts/createStore";
 
 const FormContainer = () => {
   return (
@@ -38,12 +39,20 @@ const AppContainer = () => {
     </div>
   );
 };
+const initState: QueryState = {
+  name: "",
+  team: "",
+  age: undefined,
+  score: undefined,
+};
+
+const store = createStore(initState);
 
 function App() {
   return (
-    <AppContextProvider>
+    <AppContext.Provider value={store}>
       <AppContainer />
-    </AppContextProvider>
+    </AppContext.Provider>
   );
 }
 

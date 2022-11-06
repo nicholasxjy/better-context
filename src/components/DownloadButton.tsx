@@ -1,11 +1,11 @@
 import { Button } from "antd";
 import { useContext } from "react";
 import { useRequest } from "ahooks";
-import { useAppContext } from "../AppContext";
 import { downloadPlayers } from "../apis/api";
+import useAppStore from "../hooks/useAppStore";
 
 const DownloadButton = () => {
-  const [query] = useAppContext()!;
+  const [query] = useAppStore()!;
 
   const { run, loading } = useRequest(
     () => {
