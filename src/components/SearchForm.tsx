@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Row, Col, Input, Select } from "antd";
-import { useAppContext } from "../AppContext";
+import { AppContext } from "../AppContext";
 
 export type SearchFieldProps = {
   label: string;
@@ -17,7 +17,7 @@ const SearchField = ({ label, control }: SearchFieldProps) => {
 };
 
 const AgeSelect = () => {
-  const [query, setQuery] = useAppContext()!;
+  const [query, setQuery] = useContext(AppContext)!;
   return (
     <Select
       placeholder="select"
@@ -38,7 +38,7 @@ const AgeSelect = () => {
 };
 
 const ScoreSelect = () => {
-  const [query, setQuery] = useAppContext()!;
+  const [query, setQuery] = useContext(AppContext)!;
   return (
     <Select
       placeholder="select"
@@ -62,7 +62,7 @@ const ScoreSelect = () => {
 };
 
 function SearchForm() {
-  const [query, setQuery] = useAppContext()!;
+  const [query, setQuery] = useContext(AppContext)!;
 
   return (
     <Row gutter={[16, 16]}>

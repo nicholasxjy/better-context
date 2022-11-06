@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "antd/dist/antd.css";
-import { Space, Card, Typography, Button } from "antd";
+import { Space, Button } from "antd";
 import SearchForm from "./components/SearchForm";
 import PlayerTable from "./components/PlayerTable";
-import { AppContextProvider } from "./AppContext";
+import { AppContext, QueryState } from "./AppContext";
 import DownloadButton from "./components/DownloadButton";
 
 const FormContainer = () => {
@@ -29,16 +29,30 @@ const TableContainer = () => {
   );
 };
 
-function App() {
+const AppContainer = () => {
   return (
-    <AppContextProvider>
-      <Card title={<Typography.Title level={4}>AppContainer</Typography.Title>}>
-        <Space direction="vertical" style={{ width: "100%" }}>
-          <FormContainer />
-          <TableContainer />
-        </Space>
-      </Card>
-    </AppContextProvider>
+    <div className="container">
+      <h1>AppContainer</h1>
+      <FormContainer />
+      <TableContainer />
+    </div>
+  );
+};
+
+const initState: QueryState = {
+  name: "",
+  team: "",
+  age: undefined,
+  score: undefined,
+};
+
+function App() {
+  const state = useState(initState);
+
+  return (
+    <AppContext.Provider value={state}>
+      <AppContainer />
+    </AppContext.Provider>
   );
 }
 

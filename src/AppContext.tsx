@@ -1,4 +1,4 @@
-import { createStoreContext } from "./contexts/StoreContext";
+import { createContext } from "react";
 
 export type QueryState = {
   name?: string;
@@ -7,36 +7,9 @@ export type QueryState = {
   score?: string;
 };
 
-const initState: QueryState = {
-  name: "",
-  team: "",
-  age: undefined,
-  score: undefined,
-};
+export type ContextValue = [
+  query: QueryState,
+  setQuery: React.Dispatch<React.SetStateAction<QueryState>>
+];
 
-const { StoreContextProvider: AppContextProvider, useStore: useAppContext } =
-  createStoreContext<QueryState>(initState);
-
-export { AppContextProvider, useAppContext };
-
-// export const AppContext = createContext<ContextValue | null>(null);
-
-// export const AppContextProvider: React.FC<any> = ({ children }) => {
-//   const [query, setQuery] = useState({
-//     name: "",
-//     team: "",
-//     age: undefined,
-//     score: undefined,
-//   } as QueryState);
-
-//   return (
-//     <AppContext.Provider
-//       value={{
-//         query,
-//         setQuery,
-//       }}
-//     >
-//       {children}
-//     </AppContext.Provider>
-//   );
-// };
+export const AppContext = createContext<ContextValue | null>(null);
