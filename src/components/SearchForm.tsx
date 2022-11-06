@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { Row, Col, Input, Select, Card, Typography } from "antd";
+import React from "react";
+import { Row, Col, Input, Select } from "antd";
 import { useAppContext } from "../AppContext";
 
 export type SearchFieldProps = {
@@ -64,50 +64,43 @@ const ScoreSelect = () => {
 function SearchForm() {
   const [query, setQuery] = useAppContext()!;
 
-  console.log("query: ", query);
-
   return (
-    <Card
-      type="inner"
-      title={<Typography.Title level={4}>FormContainer</Typography.Title>}
-    >
-      <Row gutter={[16, 16]}>
-        <Col span={6}>
-          <SearchField
-            label="Name"
-            control={
-              <Input
-                placeholder="enter"
-                value={query.name}
-                onChange={(e) => {
-                  setQuery({ name: e.target.value });
-                }}
-              />
-            }
-          />
-        </Col>
-        <Col span={6}>
-          <SearchField
-            label="Team"
-            control={
-              <Input
-                placeholder="enter"
-                value={query.team}
-                onChange={(e) => {
-                  setQuery({ team: e.target.value });
-                }}
-              />
-            }
-          />
-        </Col>
-        <Col span={6}>
-          <SearchField label="Age" control={<AgeSelect />} />
-        </Col>
-        <Col span={6}>
-          <SearchField label="score" control={<ScoreSelect />} />
-        </Col>
-      </Row>
-    </Card>
+    <Row gutter={[16, 16]}>
+      <Col span={6}>
+        <SearchField
+          label="Name"
+          control={
+            <Input
+              placeholder="enter"
+              value={query.name}
+              onChange={(e) => {
+                setQuery({ name: e.target.value });
+              }}
+            />
+          }
+        />
+      </Col>
+      <Col span={6}>
+        <SearchField
+          label="Team"
+          control={
+            <Input
+              placeholder="enter"
+              value={query.team}
+              onChange={(e) => {
+                setQuery({ team: e.target.value });
+              }}
+            />
+          }
+        />
+      </Col>
+      <Col span={6}>
+        <SearchField label="Age" control={<AgeSelect />} />
+      </Col>
+      <Col span={6}>
+        <SearchField label="score" control={<ScoreSelect />} />
+      </Col>
+    </Row>
   );
 }
 
