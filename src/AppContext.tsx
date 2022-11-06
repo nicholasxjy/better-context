@@ -18,25 +18,3 @@ const { StoreContextProvider: AppContextProvider, useStore: useAppContext } =
   createStoreContext<QueryState>(initState);
 
 export { AppContextProvider, useAppContext };
-
-// export const AppContext = createContext<ContextValue | null>(null);
-
-// export const AppContextProvider: React.FC<any> = ({ children }) => {
-//   const [query, setQuery] = useState({
-//     name: "",
-//     team: "",
-//     age: undefined,
-//     score: undefined,
-//   } as QueryState);
-
-//   return (
-//     <AppContext.Provider
-//       value={{
-//         query,
-//         setQuery,
-//       }}
-//     >
-//       {children}
-//     </AppContext.Provider>
-//   );
-// };

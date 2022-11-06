@@ -1,6 +1,6 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { Space, Card, Typography, Button } from "antd";
+import { Space, Button } from "antd";
 import SearchForm from "./components/SearchForm";
 import PlayerTable from "./components/PlayerTable";
 import { AppContextProvider } from "./AppContext";
@@ -29,15 +29,20 @@ const TableContainer = () => {
   );
 };
 
+const AppContainer = () => {
+  return (
+    <div className="container">
+      <h1>AppContainer</h1>
+      <FormContainer />
+      <TableContainer />
+    </div>
+  );
+};
+
 function App() {
   return (
     <AppContextProvider>
-      <Card title={<Typography.Title level={4}>AppContainer</Typography.Title>}>
-        <Space direction="vertical" style={{ width: "100%" }}>
-          <FormContainer />
-          <TableContainer />
-        </Space>
-      </Card>
+      <AppContainer />
     </AppContextProvider>
   );
 }
