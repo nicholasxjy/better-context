@@ -20,8 +20,8 @@ const TableContainer = () => {
     <div className="container">
       <h1>TableContainer</h1>
       <Space style={{ marginBottom: 16 }}>
-        <Button type="primary">关注</Button>
-        <Button type="primary">刷新</Button>
+        <Button type="default">关注</Button>
+        <Button type="default">刷新</Button>
         <DownloadButton />
       </Space>
       <PlayerTable />
